@@ -7,7 +7,7 @@ import time
 class TryLoginAndBackToProductPage(unittest.TestCase):
     def setUp(self):
         ## 创建浏览器对象
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Chrome()
         self.browser.implicitly_wait(10)
         self.browser.set_window_size(1680, 1080)
 
@@ -16,12 +16,12 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
         ## 打开SYG页面
         browser.get('http://10.10.10.54:2334/product/SKII-0066')
         time.sleep(4)
-        assert "登陆" in browser.page_source
+        assert 'href="/login"' in browser.page_source
 
         login_elem = browser.find_element_by_xpath('/html/body/div/header/div/div[2]/a[1]/span')
         login_elem.click()
         time.sleep(4)
-        assert '登陆' in browser.title
+        assert 'syg-login' in browser.title
 
         account_elem = browser.find_element_by_id('account')
         password_elem = browser.find_element_by_id('password')
@@ -33,7 +33,7 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
         login_btn = browser.find_element_by_id('submit_btn')
         login_btn.click()
         time.sleep(4)
-        assert "商品" in browser.title
+        assert "商品详情" in browser.title
 
     def setDown(self):
         time.sleep(10)
