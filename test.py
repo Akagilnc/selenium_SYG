@@ -16,11 +16,12 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
 
     def test_login_in_SYG(self):
         browser = self.setUpLocally()
+
         #browser = InitDriver.setUp()
 
-        ## 打开SYG页面
-        browser.get('http://10.10.10.54:2334/product/SKII-0066')
-        time.sleep(4)
+        # 打开SYG页面
+        browser.get('http://47.94.123.58:2334/product/SKII-0066')
+        time.sleep(0.5)
         # assert 'href="/login"' in browser.page_source
 
         login_elem = browser.find_element_by_css_selector('body > div > header > div > div.user-option > a:nth-child(1) > span')
@@ -38,9 +39,6 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
         password_elem.send_keys('a123456')
         password_elem.send_keys(Keys.ENTER)
 
-        time.sleep(0.5)
-
-        login_btn.click()
         time.sleep(4)
 
         assert "商品详情" in browser.title
