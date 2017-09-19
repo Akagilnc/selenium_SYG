@@ -1,29 +1,20 @@
 import unittest
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.support.ui import Select
-
 import time
 from Init import InitDriver
 
 home_page_url = 'http://47.94.123.58:2334/login'
 
+
 class TryLoginAndBackToProductPage(unittest.TestCase):
 
-    def setUpLocally(self):
-        self.browser = webdriver.Chrome()
-        self.browser.implicitly_wait(10)
-        self.browser.set_window_size(1680, 1080)
-        return self.browser
-
     def test_sign_up(self):
-        browser = self.setUpLocally()
+        browser = InitDriver.set_up_locally()
 
         browser.get(home_page_url)
 
         sign_up_btn = browser.find_element_by_css_selector('#forgetPassword')
-
 
         sign_up_btn.click()
         time.sleep(4)
@@ -43,6 +34,7 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
         verify_code_input.send_keys('123456')
         password_input.send_keys('a123456')
         confirm_pass_input.send_keys('a123456')
+        time.sleep(0.5)
 
         agree_checkbox.click()
 
@@ -90,17 +82,8 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
         assert '商品详情' in browser.title
 
 
-
-
-
-
-
-
-
     def test_login_in_SYG(self):
-        browser = self.setUpLocally()
-
-        #browser = InitDriver.setUp()
+        browser = InitDriver.set_up_locally()
 
         # 打开SYG页面
         browser.get('http://47.94.123.58:2334/product/SKII-0066')
