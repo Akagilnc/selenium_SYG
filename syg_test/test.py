@@ -82,6 +82,7 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
         assert '商品详情' in browser.title
 
 
+
     def test_login_in_SYG(self):
         browser = InitDriver.set_up_locally()
 

@@ -20,3 +20,4 @@ class InitDriver():
         browser.set_window_size(1680, 1080)
         return browser
 
+
