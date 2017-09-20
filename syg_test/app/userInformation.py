@@ -9,7 +9,7 @@ home_page_url = 'http://47.94.123.58:2334/login'
 
 class userInformation(unittest.TestCase):
     def test_login_userInformation(self):
-        browser = InitDriver.set_up_locally()
+        browser = InitDriver.set_up_locally_firefox()
         browser.get(home_page_url)
         account=browser.find_element_by_css_selector('#account')
         password=browser.find_element_by_css_selector('#password')

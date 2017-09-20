@@ -2,7 +2,7 @@ import unittest
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 import time
-from Init import InitDriver
+from .Init import InitDriver
 
 home_page_url = 'http://47.94.123.58:2334/login'
 
@@ -10,7 +10,7 @@ home_page_url = 'http://47.94.123.58:2334/login'
 class TryLoginAndBackToProductPage(unittest.TestCase):
 
     def test_sign_up(self):
-        browser = InitDriver.set_up_locally()
+        browser = InitDriver.set_up_locally_firefox()
 
         browser.get(home_page_url)
 
@@ -82,9 +82,9 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
         assert '商品详情' in browser.title
 
 
-
-    def test_login_in_SYG(self):
-        browser = InitDriver.set_up_locally()
+    @staticmethod
+    def test_login_in_SYG():
+        browser = InitDriver.set_up_locally_firefox()
 
         # 打开SYG页面
         browser.get('http://47.94.123.58:2334/product/SKII-0066')
@@ -102,8 +102,8 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
         login_btn = browser.find_element_by_css_selector('#submit_btn')
 
         account_elem.clear()
-        account_elem.send_keys('13800001111')
-        password_elem.send_keys('a123456')
+        account_elem.send_keys('15881087265')
+        password_elem.send_keys('11111q')
         password_elem.send_keys(Keys.ENTER)
 
         time.sleep(4)
