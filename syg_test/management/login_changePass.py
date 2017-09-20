@@ -20,6 +20,9 @@ class TryLogin(unittest.TestCase):
     TestModule.test_login("13800001111", "12345678", browser)
     time.sleep(sleep_time)
 
+    TestModule.test_dashboard()
+    time.sleep(sleep_time)
+
     '''
     mng_user = browser.find_element_by_css_selector('.sidebar-menu li:first-child a')
     mng_user.click()
