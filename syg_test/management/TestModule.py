@@ -1,12 +1,9 @@
 import time
 from syg_test.Init import InitDriver
 
-browser = None
-
 class TestModule():
     @staticmethod
-    def test_login(user_name, password, page_url = ""):
-        global browser
+    def test_login(user_name, password, browser = None, page_url = ""):
         if browser is None:
             browser = InitDriver.set_up_locally()
         if page_url != "":
@@ -21,8 +18,7 @@ class TestModule():
         time.sleep(5)
 
     @staticmethod
-    def test_get_pass(email, page_url = ""):
-        global browser
+    def test_get_pass(email, browser = None, page_url = ""):
         if browser is None:
             browser = InitDriver.set_up_locally()
         if page_url != "":
