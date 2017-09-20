@@ -14,8 +14,15 @@ class InitDriver():
         return driver
 
     @staticmethod
-    def set_up_locally():
+    def set_up_locally_firefox():
         browser = webdriver.Firefox()
+        browser.implicitly_wait(10)
+        browser.set_window_size(1680, 1080)
+        return browser
+
+    @staticmethod
+    def set_up_locally_chrome():
+        browser = webdriver.Chrome()
         browser.implicitly_wait(10)
         browser.set_window_size(1680, 1080)
         return browser
