@@ -13,6 +13,7 @@ class TestModule():
         add = browser.find_element_by_css_selector('.add')
         submit_btn = browser.find_element_by_css_selector('.purchase-btn')
 
+
         time.sleep(sleep_time)
         agree_checkbox.click()
         add.click()

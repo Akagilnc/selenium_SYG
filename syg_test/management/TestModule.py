@@ -1,9 +1,14 @@
 import time
 from syg_test.Init import InitDriver
-sleep_time = 2
+from selenium.webdriver.support.ui import Select
+import sys
+sys.stdout.buffer.write(chr(9986).encode('utf8'))
+
+
+sleep_time = 4
 class TestModule():
     @staticmethod
-    def test_login(user_name, password, browser = None, page_url = ""):
+    def test_login(user_name, password, browser=None, page_url=""):
         global sleep_time
         if browser is None:
             browser = InitDriver.set_up_locally_chrome()
@@ -13,8 +18,11 @@ class TestModule():
         input_account = browser.find_element_by_css_selector('#input-user-name input[name="username"]')
         input_password = browser.find_element_by_css_selector('#input-user-password input[name="password"]')
         btn_login = browser.find_element_by_id("btn-login")
+        input_account.clear()
         input_account.send_keys(user_name)
+        input_password.clear()
         input_password.send_keys(password)
+        time.sleep(sleep_time)
         btn_login.click()
         time.sleep(sleep_time)
 
@@ -35,7 +43,7 @@ class TestModule():
         time.sleep(sleep_time)
 
     @staticmethod
-    def test_dashboard(browser = None, page_url = ""):
+    def test_dashboard(browser=None, page_url=""):
         if browser is None:
             browser = InitDriver.set_up_locally_chrome()
         if page_url != "":
@@ -43,9 +51,11 @@ class TestModule():
         link_order_waiting_delivery = browser.find_element_by_css_selector('.dashboard > div:first-child')
         link_order_waiting_delivery.click()
         time.sleep(sleep_time)
+        time.sleep(sleep_time)
 
-        condition_status = browser.find_element_by_css_selector('#order-criteria .form-group select')
-        assert condition_status is "已支付"
+        condition_status = Select(browser.find_element_by_css_selector('#order-criteria > div > div:nth-child(6) > select'))
+
+        assert condition_status.first_selected_option.get_attribute("value") == "WAITING_DELIVERY"
         time.sleep(sleep_time)
 
         link_home = browser.find_element_by_css_selector('.sidebar-menu > li:first-child a')
