@@ -8,7 +8,6 @@ home_page_url = 'http://47.94.123.58:2334/login'
 
 
 class TryLoginAndBackToProductPage(unittest.TestCase):
-
     def test_sign_up(self):
         browser = InitDriver.set_up_locally_firefox()
 
