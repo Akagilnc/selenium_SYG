@@ -8,7 +8,7 @@ from .Module import TestModule
 
 browser = InitDriver.set_up_locally_firefox()
 sleep_time = 2
-home_page_url = 'http://47.94.123.58:2334/address/selectAddress'
+home_page_url = 'http://47.94.123.58:2334/product/SKII-0066'
 login_page_url = 'http://47.94.123.58:2334/login'
 
 

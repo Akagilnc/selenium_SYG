@@ -39,7 +39,7 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
 
         agree_checkbox.click()
 
-        time.sleep(0.5)
+        time.sleep(1.5)
 
         submit_btn.click()
 
