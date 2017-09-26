@@ -35,14 +35,14 @@ class TestModule():
         account_elem.send_keys(username)
         password_elem.send_keys(password)
         password_elem.send_keys(Keys.ENTER)
-        time.sleep(4)
+        time.sleep(sleep_time)
         # 跳转到地址选择画面
         assert '商品详情' == browser.title
 
     @staticmethod
     def order(browser):
-        order_12times_elem = browser.find_element_by_css_selector('#btn > div.btn-switch > button:nth-child(2)')
-        agreement_checkbox = browser.find_element_by_css_selector('#btn > div.checkbox > label')
+        order_12times_elem = browser.find_element_by_id('normal')
+        # agreement_checkbox = browser.find_element_by_css_selector('#btn > div.checkbox > label')
         add_btn = browser.find_element_by_css_selector('#item_picker > button.add')
         sub_btn = browser.find_element_by_css_selector('#item_picker > button.reduce')
         order_btn = browser.find_element_by_css_selector('#order')
@@ -51,10 +51,10 @@ class TestModule():
         add_btn.click()
         add_btn.click()
         sub_btn.click()
-        agreement_checkbox.click()
+        # agreement_checkbox.click()
         assert order_btn.is_enabled()
         order_btn.click()
-        time.sleep(sleep_time + 2)
+        time.sleep(sleep_time)
         assert 'syg-has-address' == browser.title or '订单' == browser.title
 
     @staticmethod
@@ -79,6 +79,7 @@ class TestModule():
         phone_input.send_keys(phone)
         time.sleep(0.5)
         default_checkbox.click()
+        phone_input.send_keys(Keys.ENTER)
         time.sleep(0.5)
 
         assert confirm_btn.is_enabled()

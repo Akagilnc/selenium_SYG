@@ -8,16 +8,16 @@ from .Module import TestModule
 
 browser = InitDriver.set_up_locally_firefox()
 sleep_time = 2
-home_page_url = 'http://47.94.123.58:2334/product/SKII-0066'
+home_page_url = 'http://47.94.123.58:2334/address/selectAddress'
 login_page_url = 'http://47.94.123.58:2334/login'
 
 
 class order_flow(unittest.TestCase):
-    account = '13800001116'
+    account = '13800008479'
     TryLoginAndBackToProductPage.test_sign_up(account, browser)
     #TestModule.detail(home_page_url,browser)
-    browser.get(login_page_url)
-    TestModule.login(account,"a123456",browser)
+    # browser.get(login_page_url)
+    # TestModule.login(account,"a123456",browser)
     time.sleep(sleep_time)
     TestModule.order(browser)
     time.sleep(sleep_time)
@@ -26,7 +26,7 @@ class order_flow(unittest.TestCase):
     elif '订单' == browser.title:
         TestModule.order_details(browser)
 
-    time.sleep(8)
+    time.sleep(2)
     browser.quit()
 
 

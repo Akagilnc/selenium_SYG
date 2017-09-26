@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import Select
 import time
 from .Init import InitDriver
 
-home_page_url = 'http://47.94.123.58:2334/login'
+home_page_url ='http://47.94.123.58:2334/login'
 
 
 class TryLoginAndBackToProductPage(unittest.TestCase):
