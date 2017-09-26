@@ -13,7 +13,7 @@ login_page_url = 'http://47.94.123.58:2334/login'
 
 
 class order_flow(unittest.TestCase):
-    account = '13800001116'
+    account = '13800001123'
     TryLoginAndBackToProductPage.test_sign_up(account, browser)
     #TestModule.detail(home_page_url,browser)
     browser.get(login_page_url)

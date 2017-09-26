@@ -68,8 +68,10 @@ class TestModule():
         default_checkbox = browser.find_element_by_css_selector('.checkbox')
         confirm_btn = browser.find_element_by_css_selector('#submit_btn')
 
-        province_select.select_by_index(10)
-        city_select.select_by_value('111')
+        time.sleep(0.5)
+        province_select.select_by_index(4)
+        time.sleep(4)
+        city_select.select_by_index(2)
         district_select.select_by_index(1)
 
         address_textarea.send_keys(address)
