@@ -6,6 +6,7 @@ from ..Init import InitDriver
 from ..test import TryLoginAndBackToProductPage
 from .Module import TestModule
 
+
 browser = InitDriver.set_up_locally_firefox()
 sleep_time = 2
 home_page_url = 'http://47.94.123.58:2334/product/SKII-0066'
@@ -13,7 +14,7 @@ login_page_url = 'http://47.94.123.58:2334/login'
 
 
 class order_flow(unittest.TestCase):
-    account = '13800008479'
+    account = '13800008474'
     TryLoginAndBackToProductPage.test_sign_up(account, browser)
     #TestModule.detail(home_page_url,browser)
     # browser.get(login_page_url)

@@ -82,7 +82,7 @@ class TestModule():
         time.sleep(0.5)
         default_checkbox.click()
         phone_input.send_keys(Keys.ENTER)
-        time.sleep(0.5)
+        time.sleep(2)
 
         assert confirm_btn.is_enabled()
         confirm_btn.click()
@@ -94,6 +94,64 @@ class TestModule():
         order_btn.click()
 
         assert '支付页面' == browser.title
+
+    @staticmethod
+    def admin_login(user_name,browser,password,admin_home_page):
+        browser.get(admin_home_page)
+        time.sleep(sleep_time)
+        input_account = browser.find_element_by_css_selector('#input-user-name input[name="username"]')
+        input_password = browser.find_element_by_css_selector('#input-user-password input[name="password"]')
+        btn_login = browser.find_element_by_id("btn-login")
+        input_account.clear()
+        input_account.send_keys(user_name)
+        input_password.clear()
+        input_password.send_keys(password)
+        time.sleep(sleep_time)
+        btn_login.click()
+        time.sleep(sleep_time)
+        assert '首页' == browser.title
+
+
+    def admin_coupon(browser):
+        time.sleep(sleep_time)
+        coupon_btn = browser.find_element_by_css_selector('.sidebar-menu li:nth-child(6)')
+        coupon_btn.click()
+        time.sleep(sleep_time)
+        assert '优惠卷管理' == browser.title
+
+    def admin_coupon_add(browser,start_time,end_time):
+        time.sleep(3)
+        add_btn=browser.find_element_by_link_text('添加')
+        add_btn.click()
+        assert '优惠卷' == browser.title
+        time.sleep(sleep_time)
+
+        # 白日依山尽的这个商品
+        product_name=Select(browser.find_element_by_name('productId'))
+        coupon_name = browser.find_element_by_name("couponName")
+        coupon_rate=browser.find_element_by_name('couponRate')
+        coupon_valid_start=browser.find_element_by_name('couponValidFrom')
+        coupon_valid_end=browser.find_element_by_name('couponValidTo')
+        pagination=browser.find_element_by_css_selector('.pagination li:nth-child(7)')
+        user=browser.find_element_by_css_selector('tbody tr:last-child td:first-child')
+        btn_open_preview=browser.find_element_by_id('btn_open_preview')
+
+        product_name.select_by_index(1)
+        coupon_name.send_keys('促销优惠券')
+        coupon_rate.send_keys('22')
+        coupon_valid_start.send_keys(start_time)
+        coupon_valid_end.send_keys(end_time)
+        pagination.click()
+        user.check()
+        btn_discount_OK=browser.find_element_by_id('btn_discount_OK')
+        btn_discount_OK.click()
+
+
+
+
+
+
+
 
 
 
