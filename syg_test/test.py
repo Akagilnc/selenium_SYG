@@ -43,7 +43,7 @@ class TryLoginAndBackToProductPage(unittest.TestCase):
 
         submit_btn.click()
 
-        time.sleep(4)
+        time.sleep(4+4)
 
         assert 'syg-recommend-code' in browser.title
 
